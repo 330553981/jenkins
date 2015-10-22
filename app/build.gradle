@@ -24,7 +24,7 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true  //打开混淆开关     针对gradle2.2.1
+            minifyEnabled false  //打开混淆开关     针对gradle2.2.1
             proguardFile 'proguard-rules.pro'  //配置单个文件这样
             manifestPlaceholders = [ CHANNEL_VALUE:channel]
         }
