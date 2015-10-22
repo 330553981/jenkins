@@ -1,6 +1,7 @@
 package com.jenkins;
 
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -46,8 +47,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         try {
-            ActivityInfo info = this.getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
-            String channel =info.metaData.getString("CHANNEL");
+            ApplicationInfo appInfo = this.getPackageManager()
+                    .getApplicationInfo(getPackageName(),
+                            PackageManager.GET_META_DATA);
+            String channel =appInfo.metaData.getString("CHANNEL");
 
             Toast.makeText(this,"channel = "+channel,Toast.LENGTH_LONG).show();
 
