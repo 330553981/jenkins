@@ -24,7 +24,7 @@
    public <init>(org.json.JSONObject);
 }
 
--keep public class com.chenxing.barter.R$*{
+-keep public class com.jenkins.R$*{
     public static final int *;
 }
 
@@ -43,9 +43,8 @@
 -dontpreverify
 -ignorewarnings
 -dontwarn Decoder.** 
--dontwarn android.support.v4.** 
-
--dontwarn android.support.** 
+-dontwarn android.support.v4.**
+-dontwarn android.support.**
 -dontwarn org.apache.http.** 
 -dontwarn android.net.http.** 
 -dontwarn okio.**
@@ -53,22 +52,18 @@
 -dontwarn org.apache.http.**
 -dontwarn org.eclipse.jdt.annotation.**
 -keep class org.apache.http.** { *; }
- 
 -keepattributes *Annotation*
 -keepattributes *JavascriptInterface*
--keepattributes Signature    
-
+-keepattributes Signature
 -ignorewarnings
 -dontwarn com.google.gson.** 
 -dontwarn Decoder.** 
 -dontwarn android-support-v4.**
-
 -keep class com.google.gson.**{*;} 
 -keep class Decoder.**{*;} 
 -keep class android.support.v4.**{*;} 
 -keep class android.support.v7.**{*;}
 -keep class android.net.http.** { *;}
-
 -keep class **.R$* {*;} 
 -keep public class android.webkit.**
 -keep public class * extends android.app.Fragment  
@@ -87,6 +82,7 @@
 }
 
 -keepattributes Exceptions,InnerClasses
+
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
