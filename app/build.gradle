@@ -14,7 +14,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('/Users/apple/Desktop/iLauncher-master/jenkins/cube.keystore')
+            storeFile file('cube.keystore')
             storePassword "QWE123"
             keyAlias "cube"
             keyPassword "QWE123"
