@@ -1,9 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    // 配置编译信息x
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    // 配置版本信息
     defaultConfig {
         applicationId "com.jenkins"
         minSdkVersion 16
@@ -12,6 +15,7 @@ android {
         versionName "1.0"
     }
 
+    // 配置签名
     signingConfigs {
         release {
             storeFile file('cube.keystore')
@@ -21,6 +25,8 @@ android {
         }
     }
 
+    // 获取外部传入到channel，来打不同渠道打apk
+    def channel = hasProperty('channel') ? channel : "default"
     buildTypes {
         release {
             signingConfig signingConfigs.release
@@ -29,10 +35,9 @@ android {
             manifestPlaceholders = [ CHANNEL_VALUE:channel]
         }
     }
-
-    def channel = hasProperty('channel') ? channel : "default"
 }
 
+// 把待发布待包copy到指定目录下
 assembleRelease.doLast {
 
     copy {
