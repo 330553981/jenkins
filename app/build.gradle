@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
 
-    // 配置编译信息x
+    // 配置编译信息
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
@@ -45,6 +45,20 @@ assembleRelease.doLast {
         into('build/output_release_apks')
         exclude '**/*-unaligned.apk'
     }
+}
+
+def flavors = file("./channel.txt")
+productFlavors {
+    flavors.eachLine { line ->
+        line = line.trim();
+        if(!line.equals("")){
+            "$line" {}
+        }
+    }
+}
+
+productFlavors.all { flavor ->
+    flavor.manifestPlaceholders = [ CHANNEL_VALUE:name ]
 }
 
 dependencies {
