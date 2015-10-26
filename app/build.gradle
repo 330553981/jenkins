@@ -47,7 +47,7 @@ assembleRelease.doLast {
     }
 }
 
-def flavors = file("./channel.txt")
+def flavors = file("channel.txt")
 productFlavors {
     flavors.eachLine { line ->
         line = line.trim();
